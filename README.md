@@ -58,16 +58,17 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
 let apiKey = APIkey.weatherAPIKey
 ```
 
-🌬️ Rüzgar Yönü Tablosu
-Yön Açıklaması	Aralık (°)
-↑ Kuzey	0–22, 338–360
-↗ Kuzeydoğu	23–67
-→ Doğu	68–112
-↘ Güneydoğu	113–157
-↓ Güney	158–202
-↙ Güneybatı	203–247
-← Batı	248–292
-↖ Kuzeybatı	293–337
+## 🌬️ Rüzgar Yönü Tablosu
+- Yön Açıklaması	Aralık (°)
+  - ↑ Kuzey	0–22, 338–360
+  - ↗ Kuzeydoğu	23–67
+  - → Doğu	68–112
+  - ↘ Güneydoğu	113–157
+  - ↓ Güney	158–202
+  - ↙ Güneybatı	203–247
+  - ← Batı	248–292
+  - ↖ Kuzeybatı	293–337
+---
 
 📂 Proje Yapısı
 text
