@@ -31,7 +31,7 @@ class SixteenViewController: UIViewController, CLLocationManagerDelegate {
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
 
-            // 16 günlük veriyi çek
+
             fetchSixteenDayForecast(lat: lat, lon: lon)
         }
     }
@@ -79,7 +79,7 @@ class SixteenViewController: UIViewController, CLLocationManagerDelegate {
 
                         self.day16Labels[i].text = "\(dayName)\n\(dateStr)"
 
-                        // İkon
+                        // Ikon
                         self.loadForecastIcon(named: item.weather.first?.icon ?? "", into: self.weathericon16ImageView[i])
 
                         // Yağış oranı ve miktarı
@@ -105,16 +105,18 @@ class SixteenViewController: UIViewController, CLLocationManagerDelegate {
         }.resume()
     }
 
+    // Rüzgar yönü atamaları.
     func directionFrom(degree: Int) -> String {
         switch degree {
-        case 0..<45: return "Kuzey"
-        case 45..<90: return "Kuzeydoğu"
-        case 90..<135: return "Doğu"
-        case 135..<180: return "Güneydoğu"
-        case 180..<225: return "Güney"
-        case 225..<270: return "Güneybatı"
-        case 270..<315: return "Batı"
-        default: return "Kuzeybatı"
+        case 0..<23, 338...360: return "↑ Kuzey"
+        case 23..<68:           return "↗ Kuzeydoğu"
+        case 68..<113:          return "→ Doğu"
+        case 113..<158:         return "↘ Güneydoğu"
+        case 158..<203:         return "↓ Güney"
+        case 203..<248:         return "↙ Güneybatı"
+        case 248..<293:         return "← Batı"
+        case 293..<338:         return "↖ Kuzeybatı"
+        default: return "-"
         }
     }
 
@@ -124,6 +126,7 @@ class SixteenViewController: UIViewController, CLLocationManagerDelegate {
         imageView?.image = UIImage(named: imageName)
     }
 
+    // Kendi ikonlarımızı tanımlıyoruz.
     func localIconName(for code: String) -> String {
         switch code {
         case "01d": return "clear_day"

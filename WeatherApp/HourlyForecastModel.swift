@@ -1,3 +1,5 @@
+// Saatlik hava tahminlerinin model dosyasıdır.
+
 import Foundation
 
 struct HourlyForecastResponse: Codable {

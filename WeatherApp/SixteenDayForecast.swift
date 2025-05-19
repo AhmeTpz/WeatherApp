@@ -1,3 +1,5 @@
+// 16 günlük hava durumu tahminlerinin model dosyasıdır.
+
 import Foundation
 
 struct SixteenDayResponse: Decodable {

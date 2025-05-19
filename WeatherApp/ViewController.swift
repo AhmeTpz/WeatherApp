@@ -50,13 +50,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
 
-            // ŞEHİR ADINI AL
             let geocoder = CLGeocoder()
             geocoder.reverseGeocodeLocation(location) { placemarks, error in
                 if let placemark = placemarks?.first {
-                    let city = placemark.administrativeArea ?? "" // Edirne
-                    let district = placemark.subAdministrativeArea ?? "" // Merkez
-                    let combined = "\(city), \(district)" // Edirne, Merkez
+                    let city = placemark.administrativeArea ?? ""
+                    let district = placemark.subAdministrativeArea ?? ""
+                    let combined = "\(city), \(district)"
 
                     DispatchQueue.main.async {
                         self.cityLabel.text = combined
@@ -149,6 +148,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }.resume()
     }
+    
     func directionFrom(degree: Int) -> String {
         switch degree {
         case 0..<23, 338...360: return "↑ Kuzey"
@@ -196,7 +196,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 var groupedByDay: [String: [FiveDayForecastItem]] = [:]
                 let inputFormatter = DateFormatter()
                 inputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                inputFormatter.timeZone = TimeZone(secondsFromGMT: 0) // API UTC
+                inputFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
                 for item in response.list {
                     if let date = inputFormatter.date(from: item.dt_txt) {
@@ -208,7 +208,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     }
                 }
 
-                // ✅ UTC'ye göre bugünü al (OpenWeather UTC çalışır)
+                // Saat düzenlemeleri
                 var utcCalendar = Calendar(identifier: .gregorian)
                 utcCalendar.timeZone = TimeZone(secondsFromGMT: 0)!
                 let todayUTC = utcCalendar.startOfDay(for: Date())
@@ -230,7 +230,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         guard index < self.day5Labels.count,
                               let dailyItems = groupedByDay[dayKey] else { continue }
 
-                        // 📅 Gün ismi ve tarih: yerel saat
+                        // Gün ismi ve tarih: yerel saat
                         let refDate = inputFormatter.date(from: dailyItems[0].dt_txt)!
 
                         let dayFormatter = DateFormatter()
@@ -245,29 +245,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
                         self.day5Labels[index].text = "\(dayName)\n\(dateStr)"
 
-                        // 🌦 Icon
+                        // Icon
                         let iconItem = dailyItems.first(where: { $0.weather.first?.icon.contains("09") == true || $0.weather.first?.icon.contains("10") == true }) ??
                                        dailyItems.first(where: { $0.dt_txt.contains("12:00:00") }) ??
                                        dailyItems.first
 
                         self.loadForecastIcon(named: iconItem?.weather.first?.icon ?? "", into: self.weathericon5ImageView[index])
 
-                        // ☔️ Yağış
+                        // Yağış
                         let maxPop = Int((dailyItems.map { $0.pop }.max() ?? 0.0) * 100)
                         let totalRain = dailyItems.map { $0.rain?.volume ?? 0.0 }.reduce(0, +)
                         let rainText = totalRain > 0 ? String(format: "%.1f mm", totalRain) : "0 mm"
                         self.popfall5Labels[index].text = "💧%\(maxPop)\n\(rainText)"
 
-                        // 🌡 Sıcaklık
+                        // Sıcaklık
                         let maxTemp = Int(dailyItems.map { $0.main.temp_max }.max() ?? 0)
                         let minTemp = Int(dailyItems.map { $0.main.temp_min }.min() ?? 0)
                         self.maxmintemp5Labels[index].text = "\(maxTemp)° / \(minTemp)°"
 
-                        // 💨 Rüzgar
-                        let windAvg = dailyItems.map { $0.wind.speed }.reduce(0, +) / Double(dailyItems.count)
+                        // Rüzgar
+                        let windSpeedKmh = dailyItems[0].wind.speed * 3.6
                         let windDeg = dailyItems[0].wind.deg
-                        let windText = String(format: "%.0f km/s\n%@", windAvg * 3.6, self.directionFrom(degree: windDeg))
+                        let windText = String(format: "%.0f km/s\n%@", windSpeedKmh, self.directionFrom(degree: windDeg))
                         self.windspeeddeg5Labels[index].text = windText
+
+
                     }
                 }
 
@@ -329,7 +331,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         let minute = calendar.component(.minute, from: date)
                         let isMidnight = hour == 0 && minute == 0
 
-                        // ⏱️ Saat Etiketi
                         if !firstDateChecked {
                             self.hoursLabel[index].text = "Şimdi"
                             firstDateChecked = true
@@ -339,7 +340,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             self.hoursLabel[index].text = hourFormatter.string(from: date)
                         }
 
-                        // 🌡️ Sıcaklık + Yağış (emoji ile)
                         let tempStr = "\(Int(item.main.temp))°C"
                         let popStr = "💧%\(Int(item.pop * 100))"
                         let fullText = "\(tempStr)\n\(popStr)"
@@ -350,11 +350,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
                         self.tempLabels[index].attributedText = attr
 
-                        // 🌤️ Icon
                         self.loadForecastIcon(named: item.weather.first?.icon ?? "", into: self.iconImageViews[index])
                     }
 
-                    // Genel yağış oranı
                     let maxRainChance = Int((first24.map { $0.pop }.max() ?? 0.0) * 100)
                     let totalRain = first24.map { $0.rain?.oneHour ?? 0.0 }.reduce(0.0, +)
 

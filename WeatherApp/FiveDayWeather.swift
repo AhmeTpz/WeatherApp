@@ -1,3 +1,5 @@
+// 5 günlük hava tahminlerinin model dosyasıdır.
+
 import Foundation
 
 struct ForecastResponse: Codable {
