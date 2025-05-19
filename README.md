@@ -54,16 +54,7 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
   - `/forecast/hourly`
   - `/forecast/daily`
 
-## 🌐 Kullanılan API
-
-- **[OpenWeatherMap API](https://openweathermap.org/api)**  
-  Kullanılan endpointler:
-  - `/weather`
-  - `/forecast`
-  - `/forecast/hourly`
-  - `/forecast/daily`
-
-
+```swift
 let apiKey = APIkey.weatherAPIKey
 🌬️ Rüzgar Yönü Tablosu
 Yön Açıklaması	Aralık (°)
@@ -111,9 +102,3 @@ struct APIkey {
 📄 Lisans
 Bu proje açık kaynaklıdır. Eğitim ve kişisel kullanım için uygundur.
 Ticari projelerde kullanmadan önce OpenWeatherMap lisans şartları incelenmelidir.
-
-
-
-
-
-
