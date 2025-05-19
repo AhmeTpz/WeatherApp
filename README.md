@@ -63,7 +63,7 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
   - `/forecast/hourly`
   - `/forecast/daily`
 
-```swift
+
 let apiKey = APIkey.weatherAPIKey
 🌬️ Rüzgar Yönü Tablosu
 Yön Açıklaması	Aralık (°)
