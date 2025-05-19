@@ -54,6 +54,15 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
   - `/forecast/hourly`
   - `/forecast/daily`
 
+## 🌐 Kullanılan API
+
+- **[OpenWeatherMap API](https://openweathermap.org/api)**  
+  Kullanılan endpointler:
+  - `/weather`
+  - `/forecast`
+  - `/forecast/hourly`
+  - `/forecast/daily`
+
 ```swift
 let apiKey = APIkey.weatherAPIKey
 🌬️ Rüzgar Yönü Tablosu
