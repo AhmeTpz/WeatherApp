@@ -86,27 +86,30 @@ Düzenle
 ```
 
 ## 🚀 Kurulum
-OpenWeatherMap üzerinden API anahtarınızı alın.
+- OpenWeatherMap üzerinden API anahtarınızı alın.
 
-APIkey.swift dosyasını oluşturun:
+- APIkey.swift dosyasını oluşturun:
 
 ```swift
 struct APIkey {
     static let weatherAPIKey = "SENIN_API_KEY"
 }
 ```
+---
 
-🔮 Geliştirme Planları
-🌙 Karanlık mod
+## 🔮 Geliştirme Planları
+- 🌙 Karanlık mod
 
-🗺️ Şehir arama ve favoriler
+- 🗺️ Şehir arama ve favoriler
 
-📊 Grafikli özet ekranı
+- 📊 Grafikli özet ekranı
 
-🔔 Yağmur/fırtına uyarıları
+- 🔔 Yağmur/fırtına uyarıları
 
-🌡️ UV/nem oranı bilgisi
+- 🌡️ UV/nem oranı bilgisi
 
-📄 Lisans
-Bu proje açık kaynaklıdır. Eğitim ve kişisel kullanım için uygundur.
+---
+
+## 📄 Lisans
+- Bu proje açık kaynaklıdır. Eğitim ve kişisel kullanım için uygundur.
 Ticari projelerde kullanmadan önce OpenWeatherMap lisans şartları incelenmelidir.
