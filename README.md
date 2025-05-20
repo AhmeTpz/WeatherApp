@@ -15,6 +15,7 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
   - Açıklama  
   - Rüzgar hızı ve yönü  
   - Yağış ihtimali
+  - Özgün ikonlar
 
 - 🕒 **Saatlik Tahmin (24 Saat):**  
   - İlk kutuda “Şimdi”  
