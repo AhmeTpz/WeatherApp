@@ -50,10 +50,10 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
 - **[OpenWeatherMap API](https://openweathermap.org/api)**  
   Kullanılan endpointler:
   - `/weather`
-  - `/forecast`
+  - `/forecast/current`
   - `/forecast/hourly`
-  - `/forecast/daily`
-  - 
+  - `/forecast/5`
+  - '/forecast/16
 
 ```swift
 let apiKey = APIkey.weatherAPIKey
@@ -70,13 +70,12 @@ let apiKey = APIkey.weatherAPIKey
   - ↙ Güneybatı	203–247
   - ← Batı	248–292
   - ↖ Kuzeybatı	293–337
+
 ---
 
+## 📂 Proje Yapısı
+
 ```text
-📂 Proje Yapısı
-text
-Kopyala
-Düzenle
 ├── ViewController.swift          # Ana ekran (anlık, saatlik, 5 günlük)
 ├── SixteenViewController.swift  # 16 günlük ekran
 ├── WeatherResponse.swift        # Model dosyaları (dahil değil)
@@ -98,6 +97,7 @@ struct APIkey {
 ---
 
 ## 🔮 Geliştirme Planları
+
 - 🌙 Karanlık mod
 
 - 🗺️ Şehir arama ve favoriler
