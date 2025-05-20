@@ -53,10 +53,12 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
   - `/forecast`
   - `/forecast/hourly`
   - `/forecast/daily`
+  - 
 
 ```swift
 let apiKey = APIkey.weatherAPIKey
 ```
+---
 
 ## 🌬️ Rüzgar Yönü Tablosu
 - Yön Açıklaması	Aralık (°)
@@ -70,6 +72,7 @@ let apiKey = APIkey.weatherAPIKey
   - ↖ Kuzeybatı	293–337
 ---
 
+```text
 📂 Proje Yapısı
 text
 Kopyala
@@ -80,17 +83,19 @@ Düzenle
 ├── APIkey.swift                 # API anahtar yönetimi
 ├── Assets.xcassets              # Özel ikonlar
 ├── Main.storyboard              # UI tasarımı
-🚀 Kurulum
+```
+
+## 🚀 Kurulum
 OpenWeatherMap üzerinden API anahtarınızı alın.
 
 APIkey.swift dosyasını oluşturun:
 
-swift
-Kopyala
-Düzenle
+```swift
 struct APIkey {
     static let weatherAPIKey = "SENIN_API_KEY"
 }
+```
+
 🔮 Geliştirme Planları
 🌙 Karanlık mod
 
