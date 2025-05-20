@@ -53,7 +53,7 @@ Swift ve UIKit kullanılarak geliştirilen bu mobil uygulama, kullanıcının ko
   - `/forecast/current`
   - `/forecast/hourly`
   - `/forecast/5`
-  - '/forecast/16
+  - `/forecast/16`
 
 ```swift
 let apiKey = APIkey.weatherAPIKey
